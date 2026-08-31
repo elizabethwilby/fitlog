@@ -11,11 +11,3 @@ FitLog is a workout tracking app built with Ruby on Rails. Users can build their
 5. Start the server: `rails server`
 6. Visit `localhost:3000` in your browser
 
-## Planned PRs
-
-- **PR 1: Models and migrations** - create User, Exercise, Workout, WorkoutExercise, and WorkoutLog models with their associations and validations
-- **PR 2: Authentication** - add Devise for signup, login, and logout
-- **PR 3: Workouts CRUD** - create, view, edit, and delete workouts
-- **PR 4: Nested exercises** - add exercises to a specific workout through a nested resource, with a form scoped to the parent workout
-- **PR 5: Completing workouts** - mark a workout as completed, log it with a timestamp, and add a scope for filtering completed workouts
-- **PR 6: Tests** - RSpec model specs for all models, at least one integration spec, using FactoryBot for test data
