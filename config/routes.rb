@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+  resources :workouts
   get "pages/home"
   devise_for :users
-  devise_scope :user do
-    root to: "pages#home"
-  end
+  root to: "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

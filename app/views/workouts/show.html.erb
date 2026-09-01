@@ -1,0 +1,7 @@
+<h1><%= @workout.name %></h1>
+<p><%= @workout.notes %></p>
+
+<%= link_to "Edit", edit_workout_path(@workout) %>
+<%= link_to "Delete", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+<%= link_to "Back to all workouts", workouts_path %>
