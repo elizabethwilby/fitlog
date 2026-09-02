@@ -1,6 +1,12 @@
 <h1><%= @workout.name %></h1>
 <p><%= @workout.notes %></p>
 
+<p>
+  <%= link_to "Mark Complete", complete_workout_path(@workout), data: { turbo_method: :post } %> |
+  <%= link_to "Edit", edit_workout_path(@workout) %> |
+  <%= link_to "Delete", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</p>
+
 <h2>Exercises</h2>
 <ul>
   <% @workout.workout_exercises.each do |we| %>
@@ -18,14 +24,11 @@
       <% if we.distance.present? %>
         - <%= we.distance %> miles
       <% end %>
-      <%= link_to "[X]", workout_workout_exercise_path(@workout, we), data: { turbo_method: :delete, turbo_confirm: "Remove this exercise?" } %>
+      <%= link_to "Remove", workout_workout_exercise_path(@workout, we), data: { turbo_method: :delete, turbo_confirm: "Remove this exercise?" } %>
     </li>
   <% end %>
 </ul>
 
 <%= link_to "Add Exercise", new_workout_workout_exercise_path(@workout) %>
 
-<%= link_to "Edit", edit_workout_path(@workout) %>
-<%= link_to "Delete", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
-<%= link_to "Back to all workouts", workouts_path %>
+<p><%= link_to "Back to all workouts", workouts_path %></p>

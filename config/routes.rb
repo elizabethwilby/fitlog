@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   resources :workouts do
     resources :workout_exercises
+
+    member do
+      post :complete
+    end
   end
-  
+
   get "pages/home"
   devise_for :users
   root to: "pages#home"

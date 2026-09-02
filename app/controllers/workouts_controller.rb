@@ -43,6 +43,12 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path, notice: "Workout deleted."
   end
 
+  def complete
+    @workout = current_user.workouts.find(params[:id])
+    current_user.workout_logs.create!(workout: @workout, completed_at: Time.current)
+    redirect_to @workout, notice: 'Workout marked complete!'
+  end
+
   private
 
   def workout_params
