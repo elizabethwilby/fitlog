@@ -49,6 +49,10 @@ class WorkoutsController < ApplicationController
     redirect_to @workout, notice: 'Workout marked complete!'
   end
 
+  def history
+    @workout_logs = current_user.workout_logs.completed.order(completed_at: :desc)
+  end
+
   private
 
   def workout_params

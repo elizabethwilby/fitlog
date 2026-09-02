@@ -1,6 +1,7 @@
 <h1>My Workouts</h1>
 
 <%= link_to "New Workout", new_workout_path %>
+<%= link_to "History", history_workouts_path %>
 
 <ul>
   <% @workouts.each do |workout| %>

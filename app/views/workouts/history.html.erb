@@ -1,0 +1,21 @@
+<h1>Workout History</h1>
+
+<% if @workout_logs.empty? %>
+  <p>You haven't completed any workouts yet.</p>
+<% else %>
+  <ul>
+    <% @workout_logs.each do |log| %>
+      <li>
+        <strong><%= link_to log.workout.name, log.workout %></strong>
+        <br>
+        Completed on <%= log.completed_at.strftime("%B %-d, %Y") %> at <%= log.completed_at.strftime("%-I:%M %p") %>
+        <% if log.notes.present? %>
+          <br>
+          <em><%= log.notes %></em>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><%= link_to "Back to my workouts", workouts_path %></p>

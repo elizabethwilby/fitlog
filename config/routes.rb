@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     member do
       post :complete
     end
+
+    collection do
+      get :history
+    end
   end
 
   get "pages/home"
