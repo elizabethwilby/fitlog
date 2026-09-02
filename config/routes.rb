@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :workouts
+  resources :workouts do
+    resources :workout_exercises
+  end
+  
   get "pages/home"
   devise_for :users
   root to: "pages#home"

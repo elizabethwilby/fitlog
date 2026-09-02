@@ -1,0 +1,25 @@
+<h1>Exercises in <%= @workout.name %></h1>
+
+<%= link_to "Add Exercise", new_workout_workout_exercise_path(@workout) %>
+
+<ul>
+  <% @workout_exercises.each do |we| %>
+    <li>
+      <%= we.exercise.name %>
+      <% if we.sets.present? %>
+        - <%= we.sets %> sets x <%= we.reps %> reps
+        <% if we.weight.present? %>
+          @ <%= we.weight %> lbs
+        <% end %>
+      <% end %>
+      <% if we.duration_minutes.present? %>
+        - <%= we.duration_minutes %> min
+      <% end %>
+      <% if we.distance.present? %>
+        - <%= we.distance %> miles
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to workout", workout_path(@workout) %>

@@ -1,0 +1,49 @@
+<h1>Add Exercise to <%= @workout.name %></h1>
+
+<%= form_for [@workout, @workout_exercise] do |f| %>
+  <% if @workout_exercise.errors.any? %>
+    <div>
+      <h2><%= pluralize(@workout_exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
+      <ul>
+        <% @workout_exercise.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :exercise_id, "Exercise" %><br>
+    <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :sets %><br>
+    <%= f.number_field :sets %>
+  </div>
+
+  <div>
+    <%= f.label :reps %><br>
+    <%= f.number_field :reps %>
+  </div>
+
+  <div>
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight, step: :any %>
+  </div>
+
+  <div>
+    <%= f.label :duration_minutes %><br>
+    <%= f.number_field :duration_minutes %>
+  </div>
+
+  <div>
+    <%= f.label :distance %><br>
+    <%= f.number_field :distance, step: :any %>
+  </div>
+
+  <div>
+    <%= f.submit "Add Exercise" %>
+    <%= link_to "Cancel", workout_path(@workout) %>
+  </div>
+<% end %>
