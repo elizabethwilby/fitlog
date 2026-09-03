@@ -9,24 +9,7 @@
 
 <h2>Exercises</h2>
 <ul>
-  <% @workout.workout_exercises.each do |we| %>
-    <li>
-      <%= we.exercise.name %>
-      <% if we.sets.present? %>
-        - <%= we.sets %> sets x <%= we.reps %> reps
-        <% if we.weight.present? %>
-          @ <%= we.weight %> lbs
-        <% end %>
-      <% end %>
-      <% if we.duration_minutes.present? %>
-        - <%= we.duration_minutes %> min
-      <% end %>
-      <% if we.distance.present? %>
-        - <%= we.distance %> miles
-      <% end %>
-      <%= link_to "Remove", workout_workout_exercise_path(@workout, we), data: { turbo_method: :delete, turbo_confirm: "Remove this exercise?" } %>
-    </li>
-  <% end %>
+  <%= render @workout.workout_exercises %>
 </ul>
 
 <%= link_to "Add Exercise", new_workout_workout_exercise_path(@workout) %>

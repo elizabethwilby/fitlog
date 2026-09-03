@@ -1,16 +1,8 @@
 <h1>Add Exercise to <%= @workout.name %></h1>
 
+<%= render "shared/error_messages", object: @workout_exercise %>
+
 <%= form_for [@workout, @workout_exercise] do |f| %>
-  <% if @workout_exercise.errors.any? %>
-    <div>
-      <h2><%= pluralize(@workout_exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
-      <ul>
-        <% @workout_exercise.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
     <%= f.label :exercise_id, "Exercise" %><br>

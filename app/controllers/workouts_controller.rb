@@ -1,13 +1,12 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_workout, only: %i[show edit update destroy complete]
 
   def index
     @workouts = current_user.workouts
   end
 
-  def show
-    @workout = current_user.workouts.find(params[:id])
-  end
+  def show; end
 
   def new
     @workout = current_user.workouts.build
@@ -15,7 +14,6 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.build(workout_params)
-
     if @workout.save
       redirect_to @workout, notice: "Workout created."
     else
@@ -23,13 +21,9 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def edit
-    @workout = current_user.workouts.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @workout = current_user.workouts.find(params[:id])
-
     if @workout.update(workout_params)
       redirect_to @workout, notice: "Workout updated."
     else
@@ -38,13 +32,11 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    @workout = current_user.workouts.find(params[:id])
     @workout.destroy
     redirect_to workouts_path, notice: "Workout deleted."
   end
 
   def complete
-    @workout = current_user.workouts.find(params[:id])
     current_user.workout_logs.create!(workout: @workout, completed_at: Time.current)
     redirect_to @workout, notice: "Workout marked complete!"
   end
@@ -54,6 +46,10 @@ class WorkoutsController < ApplicationController
   end
 
 private
+
+  def set_workout
+    @workout = current_user.workouts.find(params[:id])
+  end
 
   def workout_params
     params.require(:workout).permit(:name, :notes)
