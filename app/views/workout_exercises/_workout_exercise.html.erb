@@ -1,0 +1,16 @@
+<li>
+  <%= workout_exercise.exercise.name %>
+  <% if workout_exercise.sets.present? %>
+    - <%= workout_exercise.sets %> sets x <%= workout_exercise.reps %> reps
+    <% if workout_exercise.weight.present? %>
+      @ <%= workout_exercise.weight %> lbs
+    <% end %>
+  <% end %>
+  <% if workout_exercise.duration_minutes.present? %>
+    - <%= workout_exercise.duration_minutes %> min
+  <% end %>
+  <% if workout_exercise.distance.present? %>
+    - <%= workout_exercise.distance %> miles
+  <% end %>
+  <%= link_to "Remove", workout_workout_exercise_path(workout_exercise.workout, workout_exercise), data: { turbo_method: :delete, turbo_confirm: "Remove this exercise?" } %>
+</li>

@@ -26,7 +26,7 @@ class WorkoutExercisesController < ApplicationController
     redirect_to workout_path(@workout), notice: "Exercise removed from workout."
   end
 
-  private
+private
 
   def set_workout
     @workout = current_user.workouts.find(params[:workout_id])

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :workouts
   has_many :workout_logs
   has_many :completed_workouts, through: :workout_logs, source: :workout
@@ -12,13 +12,13 @@ class User < ApplicationRecord
 
   validate :password_complexity
 
-  private
+private
 
   def password_complexity
     return if password.blank?
 
-    unless password.match?(/\A(?=.*[A-Z])(?=.*\d).+\z/)
-      errors.add(:password, "must include at least one capital letter and number. Must be 6 characters.")
-    end
+    return if password.match?(/\A(?=.*[A-Z])(?=.*\d).+\z/)
+
+    errors.add(:password, "must include at least one capital letter and number. Must be 6 characters.")
   end
 end

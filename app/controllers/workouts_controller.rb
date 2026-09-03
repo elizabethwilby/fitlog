@@ -46,14 +46,14 @@ class WorkoutsController < ApplicationController
   def complete
     @workout = current_user.workouts.find(params[:id])
     current_user.workout_logs.create!(workout: @workout, completed_at: Time.current)
-    redirect_to @workout, notice: 'Workout marked complete!'
+    redirect_to @workout, notice: "Workout marked complete!"
   end
 
   def history
     @workout_logs = current_user.workout_logs.completed.order(completed_at: :desc)
   end
 
-  private
+private
 
   def workout_params
     params.require(:workout).permit(:name, :notes)

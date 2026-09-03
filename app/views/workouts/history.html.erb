@@ -8,7 +8,7 @@
       <li>
         <strong><%= link_to log.workout.name, log.workout %></strong>
         <br>
-        Completed on <%= log.completed_at.strftime("%B %-d, %Y") %> at <%= log.completed_at.strftime("%-I:%M %p") %>
+        Completed on <%= formatted_completed_at(log) %>
         <% if log.notes.present? %>
           <br>
           <em><%= log.notes %></em>
