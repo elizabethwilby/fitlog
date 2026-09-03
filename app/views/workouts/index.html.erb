@@ -3,10 +3,14 @@
 <%= link_to "New Workout", new_workout_path %>
 <%= link_to "History", history_workouts_path %>
 
-<ul>
-  <% @workouts.each do |workout| %>
-    <li>
-      <%= link_to workout.name, workout %>
-    </li>
-  <% end %>
-</ul>
+<% if @workouts.empty? %>
+  <p>No workouts to display yet. Add one to get started.</p>
+<% else %>
+  <ul>
+    <% @workouts.each do |workout| %>
+      <li>
+        <%= link_to workout.name, workout %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
