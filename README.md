@@ -8,6 +8,6 @@ FitLog is a workout tracking app built with Ruby on Rails. Users can build their
 2. Navigate into the project: `cd fitlog`
 3. Install dependencies: `bundle install`
 4. Set up the database: `rails db:create db:migrate`
-5. Start the server: `rails server`
-6. Visit `localhost:3000` in your browser
-
+5. Seed sample exercise data: `rails db:seed`
+6. Start the server: `rails server`
+7. Visit `localhost:3000` in your browser
