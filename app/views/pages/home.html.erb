@@ -1,9 +1,7 @@
-<h1>Welcome to FitLog</h1>
-
 <% if user_signed_in? %>
-  <%= link_to "My Workouts", workouts_path %>
-  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
+  <h1>Welcome, <%= current_user.username %>!</h1>
+  <%= link_to "View My Workouts", workouts_path %>
 <% else %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Log in", new_user_session_path %>
+  <h1>Welcome to FitLog</h1>
+  <p>Track your workouts and progress over time.</p>
 <% end %>
