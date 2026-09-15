@@ -11,6 +11,13 @@
     <%= f.text_area :notes %>
   </div>
 
+  <% days_of_week.each do |day| %>
+    <div>
+    <%= f.label day %>
+    <%= f.check_box day%>
+    </div>
+  <% end %>
+
   <div>
     <%= f.submit %>
     <%= link_to "Cancel", @workout.persisted? ? @workout : workouts_path %>

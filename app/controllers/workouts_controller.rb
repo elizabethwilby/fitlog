@@ -52,6 +52,7 @@ private
   end
 
   def workout_params
-    params.require(:workout).permit(:name, :notes)
+    params.require(:workout).permit(:name, :notes, :monday, :tuesday, :wednesday, :thursday, :friday)
   end
+
 end
