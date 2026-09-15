@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "view_component"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "devise"
 gem "rails", "~> 8.1.3", ">= 8.1.3.1"
